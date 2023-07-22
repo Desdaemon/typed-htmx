@@ -2,6 +2,8 @@
 
 [![npm](https://img.shields.io/npm/v/typed-htmx?style=flat-square)](https://www.npmjs.com/package/typed-htmx)
 
+[![demo](/static/demo.gif)](https://asciinema.org/a/598553)
+
 Definitions for htmx attributes in JSX.
 
 ## Usage
