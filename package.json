@@ -1,6 +1,6 @@
 {
 	"name": "typed-htmx",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "Definitions for htmx attributes in JSX",
 	"scripts": {
 		"dist": "tsc -b && tsc -p tsconfig.esm.json",
