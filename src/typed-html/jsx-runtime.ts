@@ -38,9 +38,10 @@ function expandLiterals(props: Record<string, unknown>) {
 	}
 }
 
-export function jsx(tag: any, { children, ...props }: { children: JSX.Element }): JSX.Element {
+export function jsx(tag: any, { children, ...props }: { children: JSX.Element | JSX.Element[] }): JSX.Element {
 	expandLiterals(props);
-	return createElement(tag, props, sanitizer(children));
+	const contents = Array.isArray(children) ? children.map(sanitizer) : [sanitizer(children)];
+	return createElement(tag, props, ...contents);
 }
 
 export function jsxs(tag: any, { children, ...props }: { children: JSX.Element[] }): JSX.Element {
