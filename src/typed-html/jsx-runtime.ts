@@ -22,7 +22,7 @@ export const config = {
 };
 
 function sanitizer(value: {}) {
-	if (!config.sanitize) return value.toString()
+	if (!config.sanitize) return value.toString();
 	return config.sanitize(value.toString(), typeof value);
 }
 

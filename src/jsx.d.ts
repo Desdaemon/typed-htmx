@@ -103,9 +103,9 @@ declare namespace JSX {
 	}
 	interface HtmlTag {
 		/** @private For React compatibility only. */
-		children?: {}
+		children?: {};
 		/** @private For React compatibility only. */
-		key?: {}
+		key?: {};
 		/**
 		 * Issues a `GET` to the specified URL.
 		 * @see https://htmx.org/attributes/hx-get/
@@ -325,4 +325,4 @@ declare namespace JSX {
 	}
 }
 
-interface HTMLElement extends JSX.HtmlTag { }
+interface HTMLElement extends JSX.HtmlTag {}

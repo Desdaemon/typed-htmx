@@ -1,30 +1,41 @@
 {
-  "name": "typed-htmx",
-  "version": "0.1.0",
-  "description": "Definitions for htmx attributes in JSX",
-  "scripts": {
-    "dist": "tsc -b && tsc -p tsconfig.esm.json",
-    "lint": "prettier --write src"
-  },
-  "keywords": [
-		"typescript", "typesafe", "jsx", "HTML", "template", "AJAX"
+	"name": "typed-htmx",
+	"version": "0.1.0",
+	"description": "Definitions for htmx attributes in JSX",
+	"scripts": {
+		"dist": "tsc -b && tsc -p tsconfig.esm.json",
+		"lint": "prettier --write src **.{json,md}"
+	},
+	"keywords": [
+		"typescript",
+		"typesafe",
+		"jsx",
+		"HTML",
+		"template",
+		"AJAX"
 	],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Desdaemon/typed-htmx.git"
 	},
-  "author": "Viet Dinh",
-  "license": "ISC",
+	"author": "Viet Dinh",
+	"license": "ISC",
 	"engines": {
 		"node": ">=12"
 	},
-  "exports": {
+	"files": [
+		".",
+		"src",
+		"dist",
+		"tsconfig.*"
+	],
+	"exports": {
 		".": {
 			"import": "./dist/esm/index.js",
 			"require": "./dist/index.js",
 			"types": "./dist/index.d.ts"
 		},
-    "./typed-html/jsx-runtime": {
+		"./typed-html/jsx-runtime": {
 			"import": "./dist/esm/typed-html/jsx-runtime.js",
 			"require": "./dist/typed-html/jsx-runtime.js",
 			"types": "./dist/typed-html/jsx-runtime.d.ts"
@@ -34,12 +45,12 @@
 			"require": "./dist/typed-html/jsx-dev-runtime.js",
 			"types": "./dist/typed-html/jsx-dev-runtime.d.ts"
 		}
-  },
-  "dependencies": {
-    "typed-html": "^3.0.1"
-  },
-  "devDependencies": {
-    "cross-env": "^7.0.3",
-    "prettier": "^3.0.0"
-  }
+	},
+	"dependencies": {
+		"typed-html": "^3.0.1"
+	},
+	"devDependencies": {
+		"cross-env": "^7.0.3",
+		"prettier": "^3.0.0"
+	}
 }

@@ -3,7 +3,14 @@
 export { Fragment } from "./jsx-runtime";
 import { jsx, jsxs } from "./jsx-runtime";
 
-export function jsxDEV(tag: any, props: any, _key: unknown, _isStatic: boolean, source: unknown, _self: unknown): JSX.Element {
+export function jsxDEV(
+	tag: any,
+	props: any,
+	_key: unknown,
+	_isStatic: boolean,
+	source: unknown,
+	_self: unknown,
+): JSX.Element {
 	try {
 		return Array.isArray(props.children) ? jsxs(tag, props) : jsx(tag, props);
 	} catch (error) {
