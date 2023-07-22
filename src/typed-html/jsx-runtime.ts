@@ -2,8 +2,9 @@
 
 import { createElement } from "typed-html";
 
-export function Fragment({ children }: { children: any[] }) {
-	return children.join("");
+export function Fragment({ children }: { children?: unknown | unknown[] }): JSX.Element {
+	if (Array.isArray(children)) return children.map(sanitizer).join('\n');
+	return sanitizer(children)
 }
 
 /**
@@ -21,9 +22,10 @@ export const config = {
 	sanitize: false as Sanitizer,
 };
 
-function sanitizer(value: {}) {
-	if (!config.sanitize) return value.toString();
-	return config.sanitize(value.toString(), typeof value);
+function sanitizer(value: unknown): string {
+	const str = value || value === 0 ? value.toString() : '';
+	if (!config.sanitize) return str;
+	return config.sanitize(str, typeof value);
 }
 
 type Sanitizer = false | ((raw: string, originalType: string) => string);
@@ -38,13 +40,13 @@ function expandLiterals(props: Record<string, unknown>) {
 	}
 }
 
-export function jsx(tag: any, { children, ...props }: { children: JSX.Element | JSX.Element[] }): JSX.Element {
+export function jsx(tag: any, { children, ...props }: { children?: unknown | unknown[] }): JSX.Element {
 	expandLiterals(props);
 	const contents = Array.isArray(children) ? children.map(sanitizer) : [sanitizer(children)];
 	return createElement(tag, props, ...contents);
 }
 
-export function jsxs(tag: any, { children, ...props }: { children: JSX.Element[] }): JSX.Element {
+export function jsxs(tag: any, { children, ...props }: { children: unknown[] }): JSX.Element {
 	expandLiterals(props);
 	return createElement(tag, props, ...children.map(sanitizer));
 }
