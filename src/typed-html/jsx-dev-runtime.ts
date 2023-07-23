@@ -1,7 +1,7 @@
 /// <reference path="../jsx.d.ts" />
 
 export { Fragment } from "./jsx-runtime";
-import { jsx, jsxs } from "./jsx-runtime";
+import { jsx, jsxs, type Node } from "./jsx-runtime";
 
 export function jsxDEV(
 	tag: any,
@@ -10,7 +10,7 @@ export function jsxDEV(
 	_isStatic: boolean,
 	source: unknown,
 	_self: unknown,
-): JSX.Element {
+): Node | JSX.Element {
 	try {
 		return Array.isArray(props.children) ? jsxs(tag, props) : jsx(tag, props);
 	} catch (error) {

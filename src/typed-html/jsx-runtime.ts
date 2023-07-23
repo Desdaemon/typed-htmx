@@ -1,37 +1,33 @@
 /// <reference path="../jsx.d.ts" />
 
 import { createElement } from "typed-html";
+import { jsxConfig } from "../index";
 
-export function Fragment({ children }: { children?: unknown | unknown[] }): JSX.Element {
-	if (Array.isArray(children)) return children.map(sanitizer).join('\n');
-	return sanitizer(children)
+type Element = JSX.Element | Node;
+
+export class Node {
+	constructor(private children: Element | Element[]) {}
+
+	toString(): string {
+		if (Array.isArray(this.children)) return this.children.join("\n");
+		return this.children.toString();
+	}
 }
 
-/**
- * Configuration for the JSX runtime.
- */
-export const config = {
-	/**
-	 * These attributes' record values be converted to JSON strings.
-	 */
-	jsonAttributes: ["hx-vals", "hx-headers", "data-hx-vals", "data-hx-headers"],
-	/**
-	 * The sanitizer to be used by the runtime.
-	 * Accepts a function of the signature `(raw: string, originalType: string) => string`.
-	 */
-	sanitize: false as Sanitizer,
-};
-
-function sanitizer(value: unknown): string {
-	const str = value || value === 0 ? value.toString() : '';
-	if (!config.sanitize) return str;
-	return config.sanitize(str, typeof value);
+export function Fragment({ children }: { children?: unknown }): Element {
+	if (Array.isArray(children)) return new Node(children.map(sanitizer));
+	return sanitizer(children);
 }
 
-type Sanitizer = false | ((raw: string, originalType: string) => string);
+function sanitizer(value: unknown): Element {
+	const str = value || value === 0 ? value.toString() : "";
+	if (!jsxConfig.sanitize || jsxConfig.trusted) return str;
+	if (value instanceof Node) return value;
+	return jsxConfig.sanitize(str, typeof value);
+}
 
 function expandLiterals(props: Record<string, unknown>) {
-	for (const attr of config.jsonAttributes) {
+	for (const attr of jsxConfig.jsonAttributes) {
 		if (!(attr in props)) continue;
 		const value = props[attr];
 		if (typeof value === "object") {
@@ -40,13 +36,15 @@ function expandLiterals(props: Record<string, unknown>) {
 	}
 }
 
-export function jsx(tag: any, { children, ...props }: { children?: unknown | unknown[] }): JSX.Element {
+export function jsx(tag: any, { children, ...props }: { children?: unknown }): Element {
 	expandLiterals(props);
 	const contents = Array.isArray(children) ? children.map(sanitizer) : [sanitizer(children)];
-	return createElement(tag, props, ...contents);
+	const elt = createElement(tag, props, ...(contents as any[]));
+	return jsxConfig.trusted ? elt : new Node(elt);
 }
 
-export function jsxs(tag: any, { children, ...props }: { children: unknown[] }): JSX.Element {
+export function jsxs(tag: any, { children, ...props }: { children: unknown[] }): Element {
 	expandLiterals(props);
-	return createElement(tag, props, ...children.map(sanitizer));
+	const elt = createElement(tag, props, ...(children.map(sanitizer) as any[]));
+	return jsxConfig.trusted ? elt : new Node(elt);
 }
