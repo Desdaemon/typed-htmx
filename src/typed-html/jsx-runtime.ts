@@ -15,8 +15,12 @@ export class Node {
 }
 
 export function Fragment({ children }: { children?: unknown }): Element {
-	if (Array.isArray(children)) return new Node(children.map(sanitizer));
-	return sanitizer(children);
+	if (Array.isArray(children)) {
+		const elts = children.map(sanitizer);
+		return jsxConfig.trusted ? elts.join("\n") : new Node(elts);
+	}
+	const elt = sanitizer(children);
+	return jsxConfig.trusted ? elt : new Node(elt);
 }
 
 function sanitizer(value: unknown): Element {
