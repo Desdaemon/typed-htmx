@@ -36,12 +36,19 @@ declare namespace JSX {
 	 */
 	interface HtmxExtensions {
 		/**
+		 * Includes the commonly-used `X-Requested-With` header that identifies ajax requests in many backend frameworks.
+		 *
+		 * CDN: https://unpkg.com/htmx.org/dist/ext/ajax-header.js
+		 * @see https://htmx.org/extensions/ajax-header/
+		 */
+		ajaxHeaders: "ajax-headers";
+		/**
 		 * Server-Sent Events.
 		 *
 		 * CDN: https://unpkg.com/htmx.org/dist/ext/sse.js
-		 * @see https://htmx.org/extensions/sse/
+		 * @see https://htmx.org/extensions/server-sent-events/
 		 */
-		sse: "sse";
+		serverSentEvents: "sse";
 		/**
 		 * WebSockets support.
 		 *
@@ -71,6 +78,13 @@ declare namespace JSX {
 		 */
 		disableElement: "disable-element";
 		/**
+		 * Includes a JSON serialized version of the triggering event, if any.
+		 *
+		 * CDN: https://unpkg.com/htmx.org/dist/ext/event-header.js
+		 * @see https://htmx.org/extensions/event-header/
+		 */
+		eventHeader: "event-header";
+		/**
 		 * Support for adding tags to `<head>`.
 		 *
 		 * CDN: https://unpkg.com/htmx.org/dist/ext/head-support.js
@@ -86,6 +100,13 @@ declare namespace JSX {
 		 * [Idiomorph]: https://github.com/bigskysoftware/idiomorph
 		 */
 		idiomorph: "morph";
+		/**
+		 * Use JSON encoding in the body of requests, rather than the default `x-www-form-urlencoded`.
+		 *
+		 * CDN: https://unpkg.com/htmx.org/dist/ext/json-enc.js
+		 * @see https://htmx.org/extensions/json-enc/
+		 */
+		jsonEncode: "json-enc";
 		/**
 		 * Support for inflight loading states.
 		 *
