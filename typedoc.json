@@ -4,5 +4,6 @@
 	"out": "./docs/reference",
 	"plugin": ["typedoc-plugin-markdown"],
 	"readme": "none",
-	"hideInPageTOC": true
+	"hideInPageTOC": true,
+	"excludeExternals": true
 }

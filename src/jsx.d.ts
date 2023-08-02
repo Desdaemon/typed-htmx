@@ -342,11 +342,8 @@ interface HtmxAttributes {
 }
 
 declare namespace JSX {
-	/** @ignore */
 	interface HtmxExtensions extends HtmxBuiltinExtensions {}
-	/** @ignore */
 	interface HtmlTag extends HtmxAttributes {}
 }
 
-/** @ignore */
 interface HTMLElement extends JSX.HtmlTag {}
