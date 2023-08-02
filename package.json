@@ -4,7 +4,8 @@
 	"description": "Definitions for htmx attributes in JSX",
 	"scripts": {
 		"dist": "tsc -b && tsc -p tsconfig.esm.json",
-		"lint": "prettier --write src **.{json,md}"
+		"lint": "prettier --write src **.{json,md}",
+		"doc": "typedoc && poetry run mkdocs"
 	},
 	"keywords": [
 		"typescript",
@@ -51,6 +52,8 @@
 	},
 	"devDependencies": {
 		"cross-env": "^7.0.3",
-		"prettier": "^3.0.0"
+		"prettier": "^3.0.0",
+		"typedoc": "^0.24.8",
+		"typedoc-plugin-markdown": "^3.15.4"
 	}
 }

@@ -1,0 +1,28 @@
+site_name: typed-htmx
+repo_url: https://github.com/Desdaemon/typed-htmx
+edit_uri: edit/main/docs/
+markdown_extensions:
+  - admonition
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - footnotes
+theme:
+  name: material
+  palette:
+    - scheme: default
+      media: '(prefers-color-scheme: light)'
+      primary: teal
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      media: '(prefers-color-scheme: dark)'
+      primary: teal
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode

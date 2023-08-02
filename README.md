@@ -15,7 +15,7 @@ templating engine.
 
 Configure your `tsconfig.json` as follows:
 
-```jsonc
+```json
 {
   "compilerOptions": {
     "jsx": "react",
@@ -49,7 +49,7 @@ library and optimized for htmx usage:
 
 Configure your `tsconfig.json` as follows:
 
-```jsonc
+```json
 {
   "compilerOptions": {
     "jsx": "react-jsx",

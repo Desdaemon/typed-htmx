@@ -29,4 +29,4 @@ export interface JsxConfig {
 	trusted: boolean;
 }
 
-type Sanitizer = false | ((raw: string, originalType: string) => string);
+export type Sanitizer = false | ((raw: string, originalType: string) => string);
