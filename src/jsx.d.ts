@@ -112,7 +112,8 @@ interface HtmxBuiltinExtensions {
 	 */
 	loadingStates: "loading-states";
 	/**
-	 * Support for [morphdom], an alternative swapping mechanism for htmx.
+	 * Support for [morphdom](https://github.com/patrick-steele-idem/morphdom),
+	 * an alternative swapping mechanism for htmx.
 	 *
 	 * CDN: <https://unpkg.com/htmx.org/dist/ext/morphdom-swap.js>
 	 * @see <https://htmx.org/extensions/morphdom-swap/>
