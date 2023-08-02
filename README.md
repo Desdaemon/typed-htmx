@@ -1,8 +1,9 @@
 # typed-htmx
 
 [![npm](https://img.shields.io/npm/v/typed-htmx?style=flat-square)](https://www.npmjs.com/package/typed-htmx)
+[![docs](https://github.com/Desdaemon/typed-htmx/actions/workflows/docs.yml/badge.svg)](https://github.com/Desdaemon/typed-htmx/actions/workflows/docs.yml)
 
-[![demo](/static/demo.gif)](https://asciinema.org/a/598553)
+[![demo](static/demo.gif)](https://asciinema.org/a/598553)
 
 Definitions for htmx attributes in JSX.
 
