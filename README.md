@@ -44,7 +44,8 @@ If you prefer to use JSX only for its templating capabilities in the vein of
 [typed-html], you can use `typed-htmx/typed-html` which is included with this
 library and optimized for htmx usage:
 
-- Attributes such as [`hx-vals`] and [`hx-headers`] may also accept an object
+- Attributes such as [`hx-vals`](https://htmx.org/attributes/hx-vals/) and
+  [`hx-headers`](https://htmx.org/attributes/hx-headers/) may also accept an object
   literal, which will be stringified on demand.
 - Configurable options for sanitization, defaults to a no-op.
 
@@ -60,7 +61,5 @@ Configure your `tsconfig.json` as follows:
 }
 ```
 
-[`hx-vals`]: https://htmx.org/attributes/hx-vals/
-[`hx-headers`]: https://htmx.org/attributes/hx-headers/
 [typed-html]: https://github.com/nicojs/typed-html
 [triple-slash directive]: https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html

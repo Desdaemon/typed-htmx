@@ -3,14 +3,10 @@ indent_style = tab
 indent_size = 2
 max_line_length = 120
 
-[*.md]
+[*.{md,yml,yaml}]
 indent_style = space
 indent_size = 2
 max_line_length = 80
 
 [*.{js,jsx,ts,tsx}]
 quote_type = double
-
-[.github/workflows/*.yml]
-indent_style = space
-indent_size = 2

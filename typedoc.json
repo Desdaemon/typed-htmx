@@ -1,7 +1,8 @@
 {
-  "$schema": "https://typedoc.org/schema.json",
-  "entryPoints": ["./src/index.ts"],
-  "out": "./docs/docs",
-  "plugin": ["typedoc-plugin-markdown"],
-  "readme": "none"
+	"$schema": "https://typedoc.org/schema.json",
+	"entryPoints": ["./src/index.ts", "./src/jsx.d.ts"],
+	"out": "./docs/reference",
+	"plugin": ["typedoc-plugin-markdown"],
+	"readme": "none",
+	"hideInPageTOC": true
 }

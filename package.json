@@ -26,10 +26,12 @@
 	},
 	"files": [
 		".",
-		"src",
 		"dist",
-		"tsconfig.*"
+		"src/jsx.d.ts"
 	],
+	"module": "./dist/esm/index.js",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
 	"exports": {
 		".": {
 			"import": "./dist/esm/index.js",
