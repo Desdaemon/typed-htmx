@@ -10,31 +10,37 @@ concurrency:
   group: docs-${{ github.ref }}
   cancel-in-progress: true
 
+defaults:
+  run:
+    working-directory: docs
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: abatilo/actions-poetry@v2
-      - uses: actions/cache@v3
-        with:
-          path: .venv
-          key: venv-${{ hashFiles('poetry.lock') }}
-      - run: poetry install
       - uses: pnpm/action-setup@v2
         with:
           version: 8
       - uses: actions/setup-node@v3
         with:
           cache: pnpm
-          cache-dependency-path: pnpm-lock.yaml
+          cache-dependency-path: docs/pnpm-lock.yaml
+
       - run: pnpm install
+        working-directory: .
+      - name: Build library
+        run: pnpm dist
+        working-directory: .
+
+      - run: pnpm install
+      - run: pnpm docusaurus generate-typedoc
       - name: Build website
-        run: pnpm doc build -d website
+        run: pnpm build
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v1
         with:
-          path: website
+          path: docs/build
   deploy:
     needs: build
     permissions:

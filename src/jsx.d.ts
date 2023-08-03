@@ -37,86 +37,86 @@ interface HtmxBuiltinExtensions {
 	/**
 	 * Includes the commonly-used `X-Requested-With` header that identifies ajax requests in many backend frameworks.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/ajax-header.js>
-	 * @see <https://htmx.org/extensions/ajax-header/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/ajax-header.js
+	 * @see https://htmx.org/extensions/ajax-header/
 	 */
 	ajaxHeaders: "ajax-headers";
 	/**
 	 * Server-Sent Events.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/sse.js>
-	 * @see <https://htmx.org/extensions/server-sent-events/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/sse.js
+	 * @see https://htmx.org/extensions/server-sent-events/
 	 */
 	serverSentEvents: "sse";
 	/**
 	 * WebSockets support.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/ws.js>
-	 * @see <https://htmx.org/extensions/web-sockets/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/ws.js
+	 * @see https://htmx.org/extensions/web-sockets/
 	 */
 	ws: "ws";
 	/**
 	 * Class utilities.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/class-tools.js>
-	 * @see <https://htmx.org/extensions/class-tools/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/class-tools.js
+	 * @see https://htmx.org/extensions/class-tools/
 	 */
 	classTools: "class-tools";
 	/**
 	 * Tool for debugging htmx requests.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/debug.js>
-	 * @see <https://htmx.org/extensions/debug/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/debug.js
+	 * @see https://htmx.org/extensions/debug/
 	 */
 	debug: "debug";
 	/**
 	 * Disable elements during requests.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/disable-element.js>
-	 * @see <https://htmx.org/extensions/disable-element/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/disable-element.js
+	 * @see https://htmx.org/extensions/disable-element/
 	 */
 	disableElement: "disable-element";
 	/**
 	 * Includes a JSON serialized version of the triggering event, if any.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/event-header.js>
-	 * @see <https://htmx.org/extensions/event-header/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/event-header.js
+	 * @see https://htmx.org/extensions/event-header/
 	 */
 	eventHeader: "event-header";
 	/**
 	 * Support for adding tags to `<head>`.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/head-support.js>
-	 * @see <https://htmx.org/extensions/head-support/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/head-support.js
+	 * @see https://htmx.org/extensions/head-support/
 	 */
 	headSupport: "head-support";
 	/**
 	 * Support for [Idiomorph](https://github.com/bigskysoftware/idiomorph), an alternative swapping mechanism for htmx.
 	 *
-	 * CDN: <https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js>
-	 * @see <https://github.com/bigskysoftware/idiomorph#htmx>
+	 * CDN: https://unpkg.com/idiomorph/dist/idiomorph-ext.min.js
+	 * @see https://github.com/bigskysoftware/idiomorph#htmx
 	 */
 	idiomorph: "morph";
 	/**
 	 * Use JSON encoding in the body of requests, rather than the default `x-www-form-urlencoded`.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/json-enc.js>
-	 * @see <https://htmx.org/extensions/json-enc/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/json-enc.js
+	 * @see https://htmx.org/extensions/json-enc/
 	 */
 	jsonEncode: "json-enc";
 	/**
 	 * Support for inflight loading states.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/loading-states.js>
-	 * @see <https://htmx.org/extensions/loading-states/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/loading-states.js
+	 * @see https://htmx.org/extensions/loading-states/
 	 */
 	loadingStates: "loading-states";
 	/**
 	 * Support for [morphdom](https://github.com/patrick-steele-idem/morphdom),
 	 * an alternative swapping mechanism for htmx.
 	 *
-	 * CDN: <https://unpkg.com/htmx.org/dist/ext/morphdom-swap.js>
-	 * @see <https://htmx.org/extensions/morphdom-swap/>
+	 * CDN: https://unpkg.com/htmx.org/dist/ext/morphdom-swap.js
+	 * @see https://htmx.org/extensions/morphdom-swap/
 	 */
 	morphdom: "morphdom";
 }
@@ -128,39 +128,39 @@ interface HtmxAttributes {
 	key?: {};
 	/**
 	 * Issues a `GET` to the specified URL.
-	 * @see <https://htmx.org/attributes/hx-get/>
+	 * @see https://htmx.org/attributes/hx-get/
 	 */
 	["hx-get"]?: string;
 	/**
 	 * Issues a `POST` to the specified URL.
-	 * @see <https://htmx.org/attributes/hx-post/>
+	 * @see https://htmx.org/attributes/hx-post/
 	 */
 	["hx-post"]?: string;
 	/**
 	 * Issues a `PUT` to the specified URL.
-	 * @see <https://htmx.org/attributes/hx-put/>
+	 * @see https://htmx.org/attributes/hx-put/
 	 */
 	["hx-put"]?: string;
 	/**
 	 * Issues a `DELETE` to the specified URL.
-	 * @see <https://htmx.org/attributes/hx-delete/>
+	 * @see https://htmx.org/attributes/hx-delete/
 	 */
 	["hx-delete"]?: string;
 	/**
 	 * Issues a `PATCH` to the specified URL.
-	 * @see <https://htmx.org/attributes/hx-patch/>
+	 * @see https://htmx.org/attributes/hx-patch/
 	 */
 	["hx-patch"]?: string;
 	/**
 	 * Add or remove [progressive enhancement] for links and forms.
-	 * @see <https://htmx.org/attributes/hx-boost/>
+	 * @see https://htmx.org/attributes/hx-boost/
 	 *
-	 * [progressive enhancement]: <https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement>
+	 * [progressive enhancement]: https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement
 	 */
 	["hx-boost"]?: BoolStr;
 	/**
 	 * Handle any event with a script inline.
-	 * @see <https://htmx.org/attributes/hx-on/>
+	 * @see https://htmx.org/attributes/hx-on/
 	 * @note Event listeners on htmx-specific events need to be specified with a spreaded attribute, and
 	 * 			 are otherwise not supported in vanilla JSX.
 	 * ```jsx
@@ -170,22 +170,22 @@ interface HtmxAttributes {
 	["hx-on"]?: string;
 	/**
 	 * Pushes the URL into the browser location bar, creating a new history entry.
-	 * @see <https://htmx.org/attributes/hx-push-url/>
+	 * @see https://htmx.org/attributes/hx-push-url/
 	 */
 	["hx-push-url"]?: BoolStr | AnyStr;
 	/**
 	 * Select content to swap in from a response.
-	 * @see <https://htmx.org/attributes/hx-select/>
+	 * @see https://htmx.org/attributes/hx-select/
 	 */
 	["hx-select"]?: string;
 	/**
 	 * Select content to swap in from a response, out of band (somewhere other than the target).
-	 * @see <https://htmx.org/attributes/hx-select-oob/>
+	 * @see https://htmx.org/attributes/hx-select-oob/
 	 */
 	["hx-select-oob"]?: string;
 	/**
 	 * Controls how content is swapped in (`outerHTML`, `beforeend`, `afterend`, …).
-	 * @see <https://htmx.org/attributes/hx-swap/>
+	 * @see https://htmx.org/attributes/hx-swap/
 	 * @note
 	 * - `morph` swaps are part of the {@link HtmxBuiltinExtensions.idiomorph idiomorph} extension.
 	 * - `morphdom` swaps are part of the {@link HtmxBuiltinExtensions.morphdom morphdom} extension.
@@ -193,110 +193,110 @@ interface HtmxAttributes {
 	["hx-swap"]?: HxSwap | AnyStr;
 	/**
 	 * Marks content in a response to be out of band (should swap in somewhere other than the target).
-	 * @see <https://htmx.org/attributes/hx-swap-oob/>
+	 * @see https://htmx.org/attributes/hx-swap-oob/
 	 */
 	["hx-swap-oob"]?: "true" | HxSwap | AnyStr;
 	/**
 	 * Specifies the target element to be swapped.
-	 * @see <https://htmx.org/attributes/hx-target/>
+	 * @see https://htmx.org/attributes/hx-target/
 	 */
 	["hx-target"]?: HxTarget | AnyStr;
 	/**
 	 * Specifies the event that triggers the request.
-	 * @see <https://htmx.org/attributes/hx-trigger/>
+	 * @see https://htmx.org/attributes/hx-trigger/
 	 */
 	["hx-trigger"]?: "every" | AnyStr;
 	/**
 	 * Adds values to the parameters to submit with the request (JSON-formatted).
-	 * @see <https://htmx.org/attributes/hx-params/>
+	 * @see https://htmx.org/attributes/hx-params/
 	 */
 	["hx-vals"]?: AnyStr | "javascript:" | "js:" | Record<PropertyKey, unknown>;
 	/**
 	 * Shows a `confirm()` dialog before issuing a request.
-	 * @see <https://htmx.org/attributes/hx-confirm/>
+	 * @see https://htmx.org/attributes/hx-confirm/
 	 */
 	["hx-confirm"]?: string;
 	/**
 	 * Disables htmx processing for the given node and any children nodes.
-	 * @see <https://htmx.org/attributes/hx-disable/>
+	 * @see https://htmx.org/attributes/hx-disable/
 	 */
 	["hx-disable"]?: boolean;
 	/**
 	 * Control and disable automatic attribute inheritance for child nodes.
-	 * @see <https://htmx.org/attributes/hx-disinherit/>
+	 * @see https://htmx.org/attributes/hx-disinherit/
 	 */
 	["hx-disinherit"]?: "*" | AnyStr;
 	/**
 	 * Changes the request encoding type.
-	 * @see <https://htmx.org/attributes/hx-encoding/>
+	 * @see https://htmx.org/attributes/hx-encoding/
 	 */
 	["hx-encoding"]?: "multipart/form-data";
 	/**
 	 * Extensions to use for this element.
-	 * @see <https://htmx.org/attributes/hx-ext/>
+	 * @see https://htmx.org/attributes/hx-ext/
 	 * @see {@link HtmxBuiltinExtensions} for how to declare extensions in JSX.
 	 */
 	["hx-ext"]?: JSX.HtmxExtensions[keyof JSX.HtmxExtensions] | "ignore:" | AnyStr;
 	/**
 	 * Adds to the headers that will be submitted with the request.
-	 * @see <https://htmx.org/attributes/hx-headers/>
+	 * @see https://htmx.org/attributes/hx-headers/
 	 */
 	["hx-headers"]?: AnyStr | "javascript:" | "js:" | Record<PropertyKey, unknown>;
 	/**
 	 * Prevent sensitive data being saved to the history cache.
-	 * @see <https://htmx.org/attributes/hx-history/>
+	 * @see https://htmx.org/attributes/hx-history/
 	 */
 	["hx-history"]?: "false";
 	/**
 	 * The element to snapshot and restore during history navigation.
-	 * @see <https://htmx.org/attributes/hx-history-elt/>
+	 * @see https://htmx.org/attributes/hx-history-elt/
 	 */
 	["hx-history-elt"]?: boolean;
 	/**
 	 * Include additional data in requests.
-	 * @see <https://htmx.org/attributes/hx-include/>
+	 * @see https://htmx.org/attributes/hx-include/
 	 */
 	["hx-include"]?: string;
 	/**
 	 * The element to put the `htmx-request` class on during the request.
-	 * @see <https://htmx.org/attributes/hx-indicator/>
+	 * @see https://htmx.org/attributes/hx-indicator/
 	 */
 	["hx-indicator"]?: string;
 	/**
 	 * Filters the parameters that will be submitted with a request.
-	 * @see <https://htmx.org/attributes/hx-params/>
+	 * @see https://htmx.org/attributes/hx-params/
 	 */
 	["hx-params"]?: "*" | "none" | "not " | AnyStr;
 	/**
 	 * Specifies elements to keep unchanged between requests.
-	 * @see <https://htmx.org/attributes/hx-preserve/>
+	 * @see https://htmx.org/attributes/hx-preserve/
 	 * @note `true` is only observed by the `head-support` extension,
 	 * 			 where it prevents an element from being removed from the `<head>`.
 	 */
 	["hx-preserve"]?: boolean | "true";
 	/**
 	 * Shows a `prompt()` before submitting a request.
-	 * @see <https://htmx.org/attributes/hx-prompt/>
+	 * @see https://htmx.org/attributes/hx-prompt/
 	 */
 	["hx-prompt"]?: string;
 	/**
 	 * Replace the URL in the browser location bar.
-	 * @see <https://htmx.org/attributes/hx-replace-url/>
+	 * @see https://htmx.org/attributes/hx-replace-url/
 	 */
 	["hx-replace-url"]?: BoolStr | AnyStr;
 	/**
 	 * Configures various aspects of the request.
-	 * @see <https://htmx.org/attributes/hx-request/>
+	 * @see https://htmx.org/attributes/hx-request/
 	 */
 	["hx-request"]?: '"timeout":' | '"credentials":' | '"noHeaders":' | "javascript:" | "js:" | AnyStr;
 	/**
 	 * Control how requests made by different elements are synchronized.
-	 * @see <https://htmx.org/attributes/hx-sync/>
+	 * @see https://htmx.org/attributes/hx-sync/
 	 */
 	["hx-sync"]?: HxSync | AnyStr;
 	/**
 	 * Force elements to validate themselves before a request.
-	 * @see <https://htmx.org/attributes/hx-validate/>
+	 * @see https://htmx.org/attributes/hx-validate/
 	 */
 	["hx-validate"]?: boolean;
 	/**
@@ -306,45 +306,47 @@ interface HtmxAttributes {
 	["hx-vars"]?: AnyStr;
 	/**
 	 * The URL of the SSE server.
-	 * @see <https://htmx.org/extensions/server-sent-events/>
+	 * @see https://htmx.org/extensions/server-sent-events/
 	 */
 	["sse-connect"]?: string;
 	/**
 	 * The name of the message to swap into the DOM.
-	 * @see <https://htmx.org/extensions/server-sent-events/>
+	 * @see https://htmx.org/extensions/server-sent-events/
 	 */
 	["sse-swap"]?: string;
 	/**
 	 * A URL to establish a WebSocket connection against.
-	 * @see <https://htmx.org/extensions/web-sockets/>
+	 * @see https://htmx.org/extensions/web-sockets/
 	 */
 	["ws-connect"]?: string;
 	/**
 	 * Sends a message to the nearest websocket based on the trigger value for the element.
-	 * @see <https://htmx.org/extensions/web-sockets/>
+	 * @see https://htmx.org/extensions/web-sockets/
 	 */
 	["ws-send"]?: boolean;
 	/**
 	 * Apply class transitions on this element.
-	 * @see <https://htmx.org/extensions/class-tools/>
+	 * @see https://htmx.org/extensions/class-tools/
 	 */
 	["classes"]?: "add " | "remove " | "toggle " | AnyStr;
 	/**
 	 * The element or elements to disable during requests.
 	 * Accepts CSS selectors.
-	 * @see <https://htmx.org/extensions/disable-element/>
+	 * @see https://htmx.org/extensions/disable-element/
 	 */
 	["hx-disable-element"]?: "self" | AnyStr;
 	/**
 	 * The strategy for merging new head content.
-	 * @see <https://htmx.org/extensions/head-support/>
+	 * @see https://htmx.org/extensions/head-support/
 	 */
 	["hx-head"]?: "merge" | "append" | "re-eval";
 }
 
+/** @ignore */
 declare namespace JSX {
 	interface HtmxExtensions extends HtmxBuiltinExtensions {}
 	interface HtmlTag extends HtmxAttributes {}
 }
 
+/** @ignore */
 interface HTMLElement extends JSX.HtmlTag {}
