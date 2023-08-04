@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.1.4
+
+- Do not doubly sanitize fragment children
+
 ## 0.1.3
 
 - Rename `config` to `jsxConfig`; imported directly from `typed-htmx`
