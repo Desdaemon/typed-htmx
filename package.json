@@ -15,6 +15,7 @@
 		"template",
 		"AJAX"
 	],
+	"homepage": "https://desdaemon.github.io/typed-htmx/",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/Desdaemon/typed-htmx.git"
