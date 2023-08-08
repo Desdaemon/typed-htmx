@@ -28,6 +28,7 @@
     "typed-htmx": "link:..",
     "typedoc": "^0.24.8",
     "typedoc-plugin-markdown": "next",
+    "typedoc-plugin-mdn-links": "^3.0.3",
     "typescript": "^5.1.6"
   },
   "devDependencies": {

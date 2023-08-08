@@ -47,7 +47,10 @@ const config = {
         excludeExternals: true,
         externalPattern: [
           'node_modules/**/*',
-        ]
+        ],
+				plugin: [
+					'typedoc-plugin-mdn-links'
+				]
     })],
   ],
 

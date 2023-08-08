@@ -1,5 +1,13 @@
 /// <reference types="typed-html" />
 
+/**
+ * Provides type definitions in JSX for htmx attributes.
+ * @module
+ */
+
+/**
+ * Either `"true"` or `"false"`.
+ */
 type BoolStr = "true" | "false";
 type AnyStr = string & {};
 type HxSwap =
@@ -13,24 +21,55 @@ type HxSwap =
 	| "none"
 	| "morph"
 	| "morphdom";
-type HxTarget = "this" | "closest" | "find" | "next" | "previous";
+
+/**
+ * Either `this` which refers to the element itself, or a modifier followed by a CSS selector, e.g. `closest form`.
+ */
+type HxTarget = "this" | "closest " | "find " | "next " | "previous ";
+
+/**
+ * A CSS selector, followed by one of these sync strategies, e.g. `form:abort`.
+ */
 type HxSync = ":drop" | ":abort" | ":replace" | ":queue" | ":queue first" | ":queue last" | ":queue all";
+
+/**
+ * An event followed by one of these modifiers, e.g. `click once`.
+ */
+type HxTriggerModifier =
+	| " once"
+	| " changed"
+	| " delay:"
+	| " throttle:"
+	| " from:"
+	| " target:"
+	| " consume"
+	| " queue:first"
+	| " queue:last"
+	| " queue:all"
+	| " queue:none";
 
 /**
  * An extensible directory of htmx extensions.
  *
  * ## Declaring a new extension
  *
- * ```ts
- * export declare namespace JSX {
- * 	interface HtmxExtensions {
- * 		myExtension: "my-extension";
- * 	}
- * 	interface HtmlTag {
- * 		["my-extension-attr"]?: string;
- * 		// add any other attributes your extension uses here
+ * ```tsx twoslash
+ * declare global {
+ * 	namespace JSX {
+ * 		interface HtmxExtensions {
+ * 			myExtension: "my-extension";
+ * 		}
+ * 		interface HtmlTag {
+ * 			/** Describe your attribute *\/
+ * 			["my-extension-attr"]?: string;
+ * 			// Add any other attributes your extension uses here
+ * 		}
  * 	}
  * }
+ *
+ * <div hx-ext="my-extension">
+ *   <span my-extension-attr="foo">Hello</span>
+ * </div>
  * ```
  */
 interface HtmxBuiltinExtensions {
@@ -121,6 +160,9 @@ interface HtmxBuiltinExtensions {
 	morphdom: "morphdom";
 }
 
+/**
+ * Definitions for htmx attributes up to 1.9.3.
+ */
 interface HtmxAttributes {
 	/** @ignore For React compatibility only. */
 	children?: {};
@@ -161,11 +203,19 @@ interface HtmxAttributes {
 	/**
 	 * Handle any event with a script inline.
 	 * @see https://htmx.org/attributes/hx-on/
-	 * @note Event listeners on htmx-specific events need to be specified with a spreaded attribute, and
-	 * 			 are otherwise not supported in vanilla JSX.
+	 * @remarks Event listeners on htmx-specific events need to be specified with a spread attribute, and
+	 * 			 		are otherwise not supported in vanilla JSX.
 	 * ```jsx
 	 * <div {...{'hx-on::before-request': '...'}} />
 	 * ```
+	 * @since 1.9.3
+	 */
+	["hx-on:"]?: string;
+	/**
+	 * Handle any event with a script inline. Each listener is specified on a separate line.
+	 * @see https://htmx.org/attributes/hx-on/
+	 * @remarks Superseded by `hx-on:$event`, unless IE11 support is required.
+	 * @since 1.9.0
 	 */
 	["hx-on"]?: string;
 	/**
@@ -186,9 +236,10 @@ interface HtmxAttributes {
 	/**
 	 * Controls how content is swapped in (`outerHTML`, `beforeend`, `afterend`, …).
 	 * @see https://htmx.org/attributes/hx-swap/
-	 * @note
-	 * - `morph` swaps are part of the {@link HtmxBuiltinExtensions.idiomorph idiomorph} extension.
-	 * - `morphdom` swaps are part of the {@link HtmxBuiltinExtensions.morphdom morphdom} extension.
+	 * @see {@linkcode InsertPosition} which is used in [{@linkcode Element.insertAdjacentHTML}](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentHTML)
+	 * @remarks
+	 * - `morph` swaps are part of the {@linkcode HtmxBuiltinExtensions.idiomorph idiomorph} extension.
+	 * - `morphdom` swaps are part of the {@linkcode HtmxBuiltinExtensions.morphdom morphdom} extension.
 	 */
 	["hx-swap"]?: HxSwap | AnyStr;
 	/**
@@ -205,7 +256,7 @@ interface HtmxAttributes {
 	 * Specifies the event that triggers the request.
 	 * @see https://htmx.org/attributes/hx-trigger/
 	 */
-	["hx-trigger"]?: "every" | AnyStr;
+	["hx-trigger"]?: "every " | HxTriggerModifier | AnyStr;
 	/**
 	 * Adds values to the parameters to submit with the request (JSON-formatted).
 	 * @see https://htmx.org/attributes/hx-params/
@@ -234,7 +285,7 @@ interface HtmxAttributes {
 	/**
 	 * Extensions to use for this element.
 	 * @see https://htmx.org/attributes/hx-ext/
-	 * @see {@link HtmxBuiltinExtensions} for how to declare extensions in JSX.
+	 * @see {@linkcode HtmxBuiltinExtensions} for how to declare extensions in JSX.
 	 */
 	["hx-ext"]?: JSX.HtmxExtensions[keyof JSX.HtmxExtensions] | "ignore:" | AnyStr;
 	/**
@@ -270,8 +321,8 @@ interface HtmxAttributes {
 	/**
 	 * Specifies elements to keep unchanged between requests.
 	 * @see https://htmx.org/attributes/hx-preserve/
-	 * @note `true` is only observed by the `head-support` extension,
-	 * 			 where it prevents an element from being removed from the `<head>`.
+	 * @remarks `true` is only observed by the `head-support` extension,
+	 * 			 		where it prevents an element from being removed from the `<head>`.
 	 */
 	["hx-preserve"]?: boolean | "true";
 	/**
