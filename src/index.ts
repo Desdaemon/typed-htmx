@@ -4,7 +4,7 @@
  * Configuration for the JSX runtime.
  */
 export const jsxConfig: JsxConfig = {
-	jsonAttributes: ["hx-vals", "hx-headers", "data-hx-vals", "data-hx-headers"],
+	jsonAttributes: new Set(["hx-vals", "hx-headers", "data-hx-vals", "data-hx-headers"]),
 	sanitize: false,
 	trusted: false,
 };
@@ -13,7 +13,7 @@ export interface JsxConfig {
 	/**
 	 * When these attributes' values are set to object literals, they will be stringified to JSON.
 	 */
-	jsonAttributes: string[];
+	jsonAttributes: Set<string>;
 	/**
 	 * The sanitizer to be used by the runtime.
 	 * Accepts a function of the signature `(raw: string, originalType: string) => string`.
@@ -30,3 +30,72 @@ export interface JsxConfig {
 }
 
 export type Sanitizer = false | ((raw: string, originalType: string) => string);
+
+export type InterpValue =
+	| { $$child: unknown }
+	| { $$children: unknown[] }
+	| { $$spread: unknown }
+	| Record<string, unknown>;
+
+export type HtmlTemplator<Output = string> = (raw: TemplateStringsArray, ...values: InterpValue[]) => Output;
+
+const attrPattern = /[<>&"']/g;
+const attrPatternWithoutDQ = /[<>&']/g;
+const attrReplacements: Record<string, string> = {
+	"<": "&lt;",
+	">": "&gt;",
+	"&": "&amp;",
+	'"': "&quot;",
+	"'": "&#39;",
+};
+
+type Renderable = 0 | {};
+function isRenderable(value: unknown): value is Renderable {
+	return value === 0 || !!value;
+}
+function attrSanitizer(raw: Renderable): string {
+	return String(raw).replaceAll(attrPattern, (sub) => attrReplacements[sub] || sub);
+}
+function attrSanitizerWithoutDQ(raw: Renderable): string {
+	return String(raw).replaceAll(attrPatternWithoutDQ, (sub) => attrReplacements[sub] || sub);
+}
+function htmlSanitizer(raw: Renderable): string {
+	const out = String(raw);
+	if (jsxConfig.trusted) return out;
+	return jsxConfig.sanitize ? jsxConfig.sanitize(out, typeof raw) : out;
+}
+
+function isObject(value: unknown): value is {} {
+	return typeof value === "object" && value !== null;
+}
+
+function htmlTransformChildren(value: InterpValue): string {
+	if ("$$child" in value) return isRenderable(value.$$child) ? htmlSanitizer(value.$$child) : "";
+	if ("$$children" in value) {
+		const out: string[] = [];
+		for (const child of value.$$children as unknown[]) {
+			if (isRenderable(child)) out.push(htmlSanitizer(child));
+		}
+		return out.join(" ");
+	}
+
+	let obj: {};
+	if ("$$spread" in value && isObject(value.$$spread)) obj = value.$$spread;
+	else if (isObject(value)) obj = value;
+	else return "";
+	const out: string[] = [];
+	for (const [key, attr] of Object.entries(obj)) {
+		if (!isRenderable(attr) && attr !== "") continue;
+		if (jsxConfig.jsonAttributes.has(key)) {
+			out.push(`${key}='${attrSanitizerWithoutDQ(JSON.stringify(attr))}'`);
+		} else {
+			out.push(`${key}="${attrSanitizer(attr)}"`);
+		}
+	}
+	return out.join(" ");
+}
+
+export const html: HtmlTemplator = (raw, ...values) => {
+	const values_ = values.map(htmlTransformChildren);
+	return String.raw(raw, ...values_);
+};

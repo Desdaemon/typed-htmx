@@ -9,6 +9,7 @@
 		"outDir": "./dist",
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
+		"noUncheckedIndexedAccess": true,
 		"skipDefaultLibCheck": true,
 		"skipLibCheck": true
 	}
