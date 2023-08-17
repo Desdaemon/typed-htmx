@@ -6,21 +6,28 @@
 // @errors: 2322
 
 function MyComponent({ children }) {
-  return '<!DOCTYPE html>' + (
-    <html lang='en'>
-      <head>
-        <title>My Website</title>
-      </head>
-      <body hx-boost hx-ext='sse'>
-        <div id='main'>
-          {children}
-          <form hx-post='/purchase' hx-swap='outerHTML' hx-vals={{foo: 'bar'}}>
-            <button type='submit'>Buy Now</button>
-          </form>
-        </div>
-      </body>
-    </html>
-  )
+  return (
+    "<!DOCTYPE html>" +
+    (
+      <html lang="en">
+        <head>
+          <title>My Website</title>
+        </head>
+        <body hx-boost hx-ext="sse">
+          <div id="main">
+            {children}
+            <form
+              hx-post="/purchase"
+              hx-swap="outerHTML"
+              hx-vals={{ foo: "bar" }}
+            >
+              <button type="submit">Buy Now</button>
+            </form>
+          </div>
+        </body>
+      </html>
+    )
+  );
 }
 ```
 
@@ -86,7 +93,6 @@ Configure your `tsconfig.json` as follows:
 }
 ```
 
-
 ## Tips
 
 ### Configuring the JSX runtime
@@ -96,11 +102,11 @@ If you don't have any other JSX runtimes like React or Preact set up, you can us
 You can configure the runtime using [`jsxConfig`](/typed-htmx/docs/api/module.index/Variables/variable.jsxConfig-1):
 
 ```js twoslash
-import { jsxConfig } from 'typed-htmx'
+import { jsxConfig } from "typed-htmx";
 // Set to true to allow all text and skip sanitization
-jsxConfig.trusted = true
+jsxConfig.trusted = true;
 // Bring your own sanitizer
-jsxConfig.sanitize = (raw, originalType) => `..`
+jsxConfig.sanitize = (raw, originalType) => `..`;
 ```
 
 ### Compiling JSX templates
@@ -117,20 +123,26 @@ function html(raw: TemplateStringsArray, ...args: unknown[]): string {
 }
 
 function MyComponent({ children }) {
-  return '<!DOCTYPE html>' + html`
-    <html lang="en">
+  return (
+    "<!DOCTYPE html>" +
+    html` <html lang="en">
       <head>
         <title>My Website</title>
       </head>
       <body hx-boost hx-ext="sse">
         <div id="main">
-          ${{$$child: children}}
-          <form hx-post="/purchase" hx-swap="outerHTML" ${{'hx-vals': {foo: 'bar'}}}>
+          ${{ $$child: children }}
+          <form
+            hx-post="/purchase"
+            hx-swap="outerHTML"
+            ${{ "hx-vals": { foo: "bar" } }}
+          >
             <button type="submit">Buy Now</button>
           </form>
         </div>
       </body>
     </html>`
+  );
 }
 ```
 

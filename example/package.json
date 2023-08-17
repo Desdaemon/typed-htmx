@@ -1,18 +1,18 @@
 {
-  "name": "example",
-  "version": "1.0.0",
-  "author": "",
-  "main": "index.jsx",
-  "description": "",
-  "keywords": [],
-  "license": "ISC",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "dependencies": {
-    "typed-htmx": "link:.."
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.15"
-  }
+	"name": "example",
+	"version": "1.0.0",
+	"author": "",
+	"main": "index.jsx",
+	"description": "",
+	"keywords": [],
+	"license": "ISC",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"typed-htmx": "link:.."
+	},
+	"devDependencies": {
+		"@types/react": "^18.2.15"
+	}
 }
