@@ -116,16 +116,19 @@ However, it is possible to achieve higher performance via techniques such as cod
 For example, you can use [`swc-plugin-static-jsx`](https://github.com/Desdaemon/swc-plugin-static-jsx)
 which will transform the demo snippet into pure string interpolation:
 
-```ts
-// User-provided template function
-function html(raw: TemplateStringsArray, ...args: unknown[]): string {
-  // ..
+```ts twoslash
+// Use typed-htmx's template function
+import { html } from "typed-htmx";
+
+// Or provide your own
+function myHtml(raw: TemplateStringsArray, ...args: unknown[]): string {
+  return `..`;
 }
 
 function MyComponent({ children }) {
   return (
     "<!DOCTYPE html>" +
-    html` <html lang="en">
+    html`<html lang="en">
       <head>
         <title>My Website</title>
       </head>
