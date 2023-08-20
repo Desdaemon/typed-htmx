@@ -2,6 +2,7 @@
 
 [![npm](https://img.shields.io/npm/v/typed-htmx?style=flat-square)](https://www.npmjs.com/package/typed-htmx)
 [![docs](https://github.com/Desdaemon/typed-htmx/actions/workflows/docs.yml/badge.svg)](https://github.com/Desdaemon/typed-htmx/actions/workflows/docs.yml)
+[![tests](https://github.com/Desdaemon/typed-htmx/actions/workflows/test.yml/badge.svg)](https://github.com/Desdaemon/typed-htmx/actions/workflows/test.yml)
 
 [![demo](static/demo.gif)](https://asciinema.org/a/598553)
 
