@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.2.0
+
+- *(Breaking)* `jsxConfig.jsonAttributes` changed to be a Set
+- New template function `html` for compatibility with swc-plugin-static-jsx
+
 ## 0.1.4
 
 - Do not doubly sanitize fragment children
