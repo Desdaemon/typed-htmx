@@ -391,6 +391,13 @@ interface HtmxAttributes {
 	 * @see https://htmx.org/extensions/head-support/
 	 */
 	["hx-head"]?: "merge" | "append" | "re-eval";
+	/**
+	 * Attach [hyperscript](https://hyperscript.org/docs) behavior to this element.
+	 * Available separately from htmx.
+	 *
+	 * CDN: https://unpkg.com/hyperscript.org
+	 */
+	_?: AnyStr;
 }
 
 /** @ignore */
