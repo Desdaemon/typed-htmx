@@ -164,6 +164,7 @@ interface HtmxBuiltinExtensions {
  * Alternative attribute variants recognized by htmx.
  */
 type HtmxData<T> = {
+  /** @ignore */
   [K in keyof T as K extends `hx-${string}` ? `data-${K}` : never]: T[K]
 }
 
