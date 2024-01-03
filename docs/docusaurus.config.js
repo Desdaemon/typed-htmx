@@ -11,8 +11,6 @@ const config = {
 	favicon: "img/favicon.ico",
 
 	url: "https://desdaemon.github.io",
-	// Set the /<baseUrl>/ pathname under which your site is served
-	// For GitHub pages deployment, it is often '/<projectName>/'
 	baseUrl: "/typed-htmx/",
 
 	// GitHub pages deployment config.
@@ -20,12 +18,12 @@ const config = {
 	organizationName: "Desdaemon", // Usually your GitHub org/user name.
 	projectName: "typed-htmx", // Usually your repo name.
 
+	markdown: {
+		format: 'md'
+	},
 	onBrokenLinks: "throw",
 	onBrokenMarkdownLinks: "ignore",
 
-	// Even if you don't use internalization, you can use this field to set useful
-	// metadata like html lang. For example, if your site is Chinese, you may want
-	// to replace "en" with "zh-Hans".
 	i18n: {
 		defaultLocale: "en",
 		locales: ["en"],
@@ -57,42 +55,37 @@ const config = {
 			({
 				docs: {
 					sidebarPath: require.resolve("./sidebars.js"),
-					// Please change this to your repo.
-					// Remove this to remove the "edit this page" links.
-					// editUrl:
-					//   'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
 				},
-				// blog: {
-				//   showReadingTime: true,
-				//   // Please change this to your repo.
-				//   // Remove this to remove the "edit this page" links.
-				//   editUrl:
-				//     'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-				// },
 				theme: {
 					customCss: require.resolve("./src/css/custom.css"),
 				},
+
 			}),
 		],
 		[
 			"docusaurus-preset-shiki-twoslash",
-			{
+			/** @type {Partial<import('remark-shiki-twoslash').Options>} */
+			({
 				themes: ["min-light", "nord"],
-				tsModule: require("typescript"),
 				defaultOptions: {
 					noErrors: false,
 				},
+				/** @type {import('typescript').CompilerOptions} */
 				defaultCompilerOptions: {
 					types: ["typed-htmx"],
-					jsx: "react-jsx",
+					jsx: 4, // react-jsx
 					jsxImportSource: "typed-htmx/typed-html",
-					target: "esnext",
+					target: 99, // esnext,
 					strict: true,
 					noImplicitAny: false,
+					module: 199, // nodenext,
 					moduleResolution: 99, // nodenext
 				},
 				includeJSDocInHover: true,
-			},
+				wrapFragments: true,
+				alwayRaiseForTwoslashExceptions: true,
+				disableImplicitReactImport: true,
+			}),
 		],
 	],
 
@@ -143,36 +136,6 @@ const config = {
 							},
 						],
 					},
-					// {
-					//   title: 'Community',
-					//   items: [
-					//     {
-					//       label: 'Stack Overflow',
-					//       href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-					//     },
-					//     {
-					//       label: 'Discord',
-					//       href: 'https://discordapp.com/invite/docusaurus',
-					//     },
-					//     {
-					//       label: 'Twitter',
-					//       href: 'https://twitter.com/docusaurus',
-					//     },
-					//   ],
-					// },
-					// {
-					//   title: 'More',
-					//   items: [
-					//     {
-					//       label: 'Blog',
-					//       to: '/blog',
-					//     },
-					//     {
-					//       label: 'GitHub',
-					//       href: 'https://github.com/facebook/docusaurus',
-					//     },
-					//   ],
-					// },
 				],
 			},
 			prism: {

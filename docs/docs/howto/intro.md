@@ -70,6 +70,10 @@ function MyComponent({ children }) {
 }
 ```
 
+If your frontend library injects its own JSX types, you'll need to augment it.
+See the [example project](https://github.com/Desdaemon/typed-htmx/tree/main/example)
+for a demo. typed-html and React are supported out of the box.
+
 ### As a JSX templating engine
 
 If you prefer to use JSX only for its templating capabilities in the vein of

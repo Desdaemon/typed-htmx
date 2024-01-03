@@ -161,10 +161,9 @@ interface HtmxBuiltinExtensions {
 }
 
 /**
- * Alternative attribute variants recognized by htmx.
+ * Variants of attributes also recognized by htmx.
  */
 type HtmxData<T> = {
-  /** @ignore */
   [K in keyof T as K extends `hx-${string}` ? `data-${K}` : never]: T[K]
 }
 
@@ -179,11 +178,13 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/**
 	 * Issues a `GET` to the specified URL.
 	 * @see https://htmx.org/attributes/hx-get/
+	 * @category core
 	 */
 	["hx-get"]?: string;
 	/**
 	 * Issues a `POST` to the specified URL.
 	 * @see https://htmx.org/attributes/hx-post/
+	 * @category core
 	 */
 	["hx-post"]?: string;
 	/**
@@ -202,15 +203,17 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	 */
 	["hx-patch"]?: string;
 	/**
-	 * Add or remove [progressive enhancement] for links and forms.
-	 * @see https://htmx.org/attributes/hx-boost/
+	 * Add or remove [progressive enhancement](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement)
+	 * for links and forms.
 	 *
-	 * [progressive enhancement]: https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement
+	 * @see https://htmx.org/attributes/hx-boost/
+	 * @category core
 	 */
 	["hx-boost"]?: BoolStr;
 	/**
 	 * Handle any event with a script inline.
 	 * @see https://htmx.org/attributes/hx-on/
+	 * @category core
 	 * @remarks Event listeners on htmx-specific events need to be specified with a spread attribute, and
 	 * 			 		are otherwise not supported in vanilla JSX.
 	 * ```jsx
@@ -229,22 +232,26 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/**
 	 * Pushes the URL into the browser location bar, creating a new history entry.
 	 * @see https://htmx.org/attributes/hx-push-url/
+	 * @category core
 	 */
 	["hx-push-url"]?: BoolStr | AnyStr;
 	/**
 	 * Select content to swap in from a response.
 	 * @see https://htmx.org/attributes/hx-select/
+	 * @category core
 	 */
 	["hx-select"]?: string;
 	/**
 	 * Select content to swap in from a response, out of band (somewhere other than the target).
 	 * @see https://htmx.org/attributes/hx-select-oob/
+	 * @category core
 	 */
 	["hx-select-oob"]?: string;
 	/**
 	 * Controls how content is swapped in (`outerHTML`, `beforeend`, `afterend`, …).
 	 * @see https://htmx.org/attributes/hx-swap/
 	 * @see {@linkcode InsertPosition} which is used in [{@linkcode Element.insertAdjacentHTML}](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentHTML)
+	 * @category core
 	 * @remarks
 	 * - `morph` swaps are part of the {@linkcode HtmxBuiltinExtensions.idiomorph idiomorph} extension.
 	 * - `morphdom` swaps are part of the {@linkcode HtmxBuiltinExtensions.morphdom morphdom} extension.
@@ -258,16 +265,19 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/**
 	 * Specifies the target element to be swapped.
 	 * @see https://htmx.org/attributes/hx-target/
+	 * @category core
 	 */
 	["hx-target"]?: HxTarget | AnyStr;
 	/**
 	 * Specifies the event that triggers the request.
 	 * @see https://htmx.org/attributes/hx-trigger/
+	 * @category core
 	 */
 	["hx-trigger"]?: "every " | HxTriggerModifier | AnyStr;
 	/**
 	 * Adds values to the parameters to submit with the request (JSON-formatted).
 	 * @see https://htmx.org/attributes/hx-params/
+	 * @category core
 	 */
 	["hx-vals"]?: AnyStr | "javascript:" | "js:" | Record<PropertyKey, unknown>;
 	/**
