@@ -13,6 +13,6 @@
 		"typed-htmx": "link:.."
 	},
 	"devDependencies": {
-		"@types/react": "^18.2.15"
+		"hono": "^3.11.12"
 	}
 }

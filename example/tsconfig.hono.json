@@ -1,0 +1,7 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // This is (usually) the only setting to change when swapping renderers.
+    "jsxImportSource": "hono/jsx"
+  }
+}

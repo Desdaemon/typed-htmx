@@ -1,5 +1,3 @@
-/// <reference types="typed-html" />
-
 /**
  * Provides type definitions in JSX for htmx attributes.
  * @module
@@ -54,6 +52,8 @@ type HxTriggerModifier =
  * ## Declaring a new extension
  *
  * ```tsx twoslash
+ * // in foo.d.ts:
+ *
  * declare global {
  * 	namespace JSX {
  * 		interface HtmxExtensions {
@@ -161,9 +161,16 @@ interface HtmxBuiltinExtensions {
 }
 
 /**
+ * Alternative attribute variants recognized by htmx.
+ */
+type HtmxData<T> = {
+  [K in keyof T as K extends `hx-${string}` ? `data-${K}` : never]: T[K]
+}
+
+/**
  * Definitions for htmx attributes up to 1.9.3.
  */
-interface HtmxAttributes {
+interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/** @ignore For React compatibility only. */
 	children?: {};
 	/** @ignore For React compatibility only. */
@@ -403,8 +410,11 @@ interface HtmxAttributes {
 /** @ignore */
 declare namespace JSX {
 	interface HtmxExtensions extends HtmxBuiltinExtensions {}
+
+	// typed-html
 	interface HtmlTag extends HtmxAttributes {}
 }
 
+// React (and other similar frameworks)
 /** @ignore */
-interface HTMLElement extends JSX.HtmlTag {}
+interface HTMLElement extends HtmxAttributes {}

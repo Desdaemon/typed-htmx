@@ -1,20 +1,25 @@
 {
-	"files": ["index.jsx"],
 	"compilerOptions": {
 		"target": "es6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-		// "jsx": "react", /* Specify what JSX code is generated. */
-		"jsx": "react-jsx" /* Specify what JSX code is generated. */,
+		// "jsx": "react", 
+		"jsx": "react-jsx", /* Specify what JSX code is generated. */
+		// If your frontend framework prescribes a JSX source, change it here.
+		// In this example, we will use typed-htmx's own text renderer based on typed-html.
 		"jsxImportSource": "typed-htmx/typed-html",
-		"module": "commonjs",
+		"module": "node16",
 		"moduleResolution": "node16" /* Specify how TypeScript looks up a file from a given module specifier. */,
-		"types": ["typed-htmx"],
 		"allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
 		"checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
+		"noEmit": true,
+		"rootDir": ".",
 		"outDir": "./dist",
 		"esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
 		"forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
 		"strict": true /* Enable all strict type-checking options. */,
 		"skipDefaultLibCheck": true /* Skip type checking .d.ts files that are included with TypeScript. */,
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
-	}
+	},
+	"include": [
+		"src/**/*",
+	]
 }
