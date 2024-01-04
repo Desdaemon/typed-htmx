@@ -21,11 +21,11 @@
 		"clsx": "^1.2.1",
 		"docusaurus-plugin-typedoc": "next",
 		"docusaurus-preset-shiki-twoslash": "^1.1.41",
+		"hono": "^3.11.12",
 		"object-assign": "^4.1.1",
 		"prism-react-renderer": "^1.3.5",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
-		"rehype-raw": "^7.0.0",
 		"typed-htmx": "link:..",
 		"typedoc": "^0.25.6",
 		"typedoc-plugin-markdown": "next",
@@ -34,8 +34,7 @@
 	},
 	"devDependencies": {
 		"@docusaurus/module-type-aliases": "3.0.1",
-		"@docusaurus/types": "^3.0.1",
-		"remark-shiki-twoslash": "^3.1.3"
+		"@docusaurus/types": "^3.0.1"
 	},
 	"browserslist": {
 		"production": [

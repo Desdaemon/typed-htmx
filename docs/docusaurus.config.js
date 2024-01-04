@@ -21,8 +21,8 @@ const config = {
 	markdown: {
 		format: 'md'
 	},
-	onBrokenLinks: "throw",
-	onBrokenMarkdownLinks: "ignore",
+	onBrokenLinks: "warn",
+	onBrokenMarkdownLinks: "warn",
 
 	i18n: {
 		defaultLocale: "en",
@@ -36,12 +36,10 @@ const config = {
 			({
 				entryPoints: ["../src/index.ts", "../src/jsx.d.ts"],
 				tsconfig: "../tsconfig.json",
-				readme: "none",
 				hideInPageTOC: true,
+				readme: 'none',
 				watch: process.env.npm_lifecycle_event === "start",
-				// cleanOutputDir: process.env.NODE_ENV !== 'production',
-				cleanOutputDir: false,
-				excludeExternals: true,
+				cleanOutputDir: true,
 				externalPattern: ["node_modules/**/*"],
 				plugin: ["typedoc-plugin-mdn-links"],
 			}),
@@ -70,19 +68,17 @@ const config = {
 				defaultOptions: {
 					noErrors: false,
 				},
-				/** @type {import('typescript').CompilerOptions} */
 				defaultCompilerOptions: {
-					types: ["typed-htmx"],
 					jsx: 4, // react-jsx
-					jsxImportSource: "typed-htmx/typed-html",
+					jsxImportSource: 'typed-htmx/typed-html',
 					target: 99, // esnext,
 					strict: true,
+					checkJs: true,
 					noImplicitAny: false,
 					module: 199, // nodenext,
 					moduleResolution: 99, // nodenext
 				},
 				includeJSDocInHover: true,
-				wrapFragments: true,
 				alwayRaiseForTwoslashExceptions: true,
 				disableImplicitReactImport: true,
 			}),

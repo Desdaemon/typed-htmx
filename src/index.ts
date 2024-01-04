@@ -95,6 +95,20 @@ function htmlTransformChildren(value: InterpValue): string {
 	return out.join(" ");
 }
 
+/**
+ * A [tagged template](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates)
+ * that interprets different kinds of {@link InterpValue values} into escaped HTML.
+ * 
+ * ```ts twoslash
+ * import { html } from 'typed-htmx';
+ * function assertEqual(left: any, right: any) {}
+ * // ---cut---
+ * const template = html`
+ *   <div hx-vals=${{ foo: 'bar' }} />
+ * `;
+ * assertEqual(template, `<div hx-vals='{"foo":"bar"}' />`);
+ * ```
+ */
 export const html: HtmlTemplator = (raw, ...values) => {
 	const values_ = values.map(htmlTransformChildren);
 	return String.raw(raw, ...values_);

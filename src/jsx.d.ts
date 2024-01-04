@@ -49,22 +49,22 @@ type HxTriggerModifier =
 /**
  * An extensible directory of htmx extensions.
  *
- * ## Declaring a new extension
+ * ### Declaring a new extension
  *
  * ```tsx twoslash
  * // in foo.d.ts:
  *
  * declare global {
- * 	namespace JSX {
- * 		interface HtmxExtensions {
- * 			myExtension: "my-extension";
- * 		}
- * 		interface HtmlTag {
- * 			/** Describe your attribute *\/
- * 			["my-extension-attr"]?: string;
- * 			// Add any other attributes your extension uses here
- * 		}
- * 	}
+ *     namespace JSX {
+ *         interface HtmxExtensions {
+ *             myExtension: "my-extension";
+ *         }
+ *         interface HtmlTag {
+ *             /** Describe your attribute *\/
+ *             ["my-extension-attr"]?: string;
+ *             // Add any other attributes your extension uses here
+ *         }
+ *     }
  * }
  *
  * <div hx-ext="my-extension">
@@ -161,16 +161,9 @@ interface HtmxBuiltinExtensions {
 }
 
 /**
- * Variants of attributes also recognized by htmx.
- */
-type HtmxData<T> = {
-  [K in keyof T as K extends `hx-${string}` ? `data-${K}` : never]: T[K]
-}
-
-/**
  * Definitions for htmx attributes up to 1.9.3.
  */
-interface HtmxAttributes extends HtmxData<HtmxAttributes> {
+interface HtmxAttributes {
 	/** @ignore For React compatibility only. */
 	children?: {};
 	/** @ignore For React compatibility only. */
@@ -178,13 +171,13 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/**
 	 * Issues a `GET` to the specified URL.
 	 * @see https://htmx.org/attributes/hx-get/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-get"]?: string;
 	/**
 	 * Issues a `POST` to the specified URL.
 	 * @see https://htmx.org/attributes/hx-post/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-post"]?: string;
 	/**
@@ -207,13 +200,13 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	 * for links and forms.
 	 *
 	 * @see https://htmx.org/attributes/hx-boost/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-boost"]?: BoolStr;
 	/**
 	 * Handle any event with a script inline.
 	 * @see https://htmx.org/attributes/hx-on/
-	 * @category core
+	 * @category Core
 	 * @remarks Event listeners on htmx-specific events need to be specified with a spread attribute, and
 	 * 			 		are otherwise not supported in vanilla JSX.
 	 * ```jsx
@@ -232,26 +225,26 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/**
 	 * Pushes the URL into the browser location bar, creating a new history entry.
 	 * @see https://htmx.org/attributes/hx-push-url/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-push-url"]?: BoolStr | AnyStr;
 	/**
 	 * Select content to swap in from a response.
 	 * @see https://htmx.org/attributes/hx-select/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-select"]?: string;
 	/**
 	 * Select content to swap in from a response, out of band (somewhere other than the target).
 	 * @see https://htmx.org/attributes/hx-select-oob/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-select-oob"]?: string;
 	/**
 	 * Controls how content is swapped in (`outerHTML`, `beforeend`, `afterend`, …).
 	 * @see https://htmx.org/attributes/hx-swap/
-	 * @see {@linkcode InsertPosition} which is used in [{@linkcode Element.insertAdjacentHTML}](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentHTML)
-	 * @category core
+	 * @see [`InsertPosition`](https://developer.mozilla.org/en-US/docs/Web/API/Element/insertAdjacentHTML#position) which is used in `Element.insertAdjacentHTML`.
+	 * @category Core
 	 * @remarks
 	 * - `morph` swaps are part of the {@linkcode HtmxBuiltinExtensions.idiomorph idiomorph} extension.
 	 * - `morphdom` swaps are part of the {@linkcode HtmxBuiltinExtensions.morphdom morphdom} extension.
@@ -265,19 +258,19 @@ interface HtmxAttributes extends HtmxData<HtmxAttributes> {
 	/**
 	 * Specifies the target element to be swapped.
 	 * @see https://htmx.org/attributes/hx-target/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-target"]?: HxTarget | AnyStr;
 	/**
 	 * Specifies the event that triggers the request.
 	 * @see https://htmx.org/attributes/hx-trigger/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-trigger"]?: "every " | HxTriggerModifier | AnyStr;
 	/**
 	 * Adds values to the parameters to submit with the request (JSON-formatted).
 	 * @see https://htmx.org/attributes/hx-params/
-	 * @category core
+	 * @category Core
 	 */
 	["hx-vals"]?: AnyStr | "javascript:" | "js:" | Record<PropertyKey, unknown>;
 	/**
@@ -426,6 +419,5 @@ declare namespace JSX {
 	interface HtmlTag extends HtmxAttributes {}
 }
 
-// React (and other similar frameworks)
 /** @ignore */
 interface HTMLElement extends HtmxAttributes {}

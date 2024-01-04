@@ -2,7 +2,7 @@
 
 ## Demo
 
-```tsx twoslash
+```jsx twoslash
 // @errors: 2322
 
 function MyComponent({ children }) {
@@ -103,7 +103,7 @@ Configure your `tsconfig.json` as follows:
 
 If you don't have any other JSX runtimes like React or Preact set up, you can use
 `typed-htmx/typed-html`, which will convert JSX into strings at runtime.
-You can configure the runtime using [`jsxConfig`](/typed-htmx/docs/api/module.index/Variables/variable.jsxConfig-1):
+You can configure the runtime using [`jsxConfig`](/typed-htmx/docs/api/index/variables/jsxConfig):
 
 ```js twoslash
 import { jsxConfig } from "typed-htmx";

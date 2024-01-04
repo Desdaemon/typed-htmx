@@ -1,3 +1,13 @@
 {
-  "categoryOrder": ["core", "*"]
+  "$schema": "https://typedoc.org/schema.json",
+  "categoryOrder": ["core", "*"],
+  "sourceLinkExternal": true,
+  "excludeExternals": true,
+  "externalPattern": [
+  	"**/node_modules/**/*"
+  ],
+  "readme": "bogus",
+  "searchCategoryBoosts": {
+    "Core": 2
+  }
 }
