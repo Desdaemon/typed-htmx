@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+- Fix types when not using typed-html
+
 ## 0.2.0
 
 - *(Breaking)* `jsxConfig.jsonAttributes` changed to be a Set
