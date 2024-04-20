@@ -1,7 +1,7 @@
 /// <reference path="../jsx.d.ts" />
 
-export { Fragment } from "./jsx-runtime";
-import { jsx, jsxs, type Node } from "./jsx-runtime";
+export { Fragment } from "./jsx-runtime.js";
+import { jsx, jsxs, type Node } from "./jsx-runtime.js";
 
 export function jsxDEV(
 	tag: any,
@@ -14,8 +14,8 @@ export function jsxDEV(
 	try {
 		return Array.isArray(props.children) ? jsxs(tag, props) : jsx(tag, props);
 	} catch (error) {
-		const cause = error instanceof Error && error.cause;
-		console.error(`Error encountered while rendering ${tag}`, { error, cause, source });
+		const stack = error instanceof Error ? error.stack : "";
+		console.error(`Error encountered while rendering ${tag}`, { error, source, stack });
 		throw error;
 	}
 }

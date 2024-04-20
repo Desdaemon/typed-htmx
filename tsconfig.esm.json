@@ -1,7 +1,10 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"module": "esnext",
+		"module": "ES2020",
+		// Bundler doesn't require relative imports to have extensions, so we will
+		// use ast-grep to enforce it.
+		"moduleResolution": "Bundler",
 		"outDir": "./dist/esm",
 		"declaration": false,
 		"sourceMap": false

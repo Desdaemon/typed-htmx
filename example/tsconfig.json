@@ -1,8 +1,8 @@
 {
 	"compilerOptions": {
 		"target": "es6" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
-		// "jsx": "react", 
-		"jsx": "react-jsx", /* Specify what JSX code is generated. */
+		// "jsx": "react",
+		"jsx": "react-jsx" /* Specify what JSX code is generated. */,
 		// If your frontend framework prescribes a JSX source, change it here.
 		// In this example, we will use typed-htmx's own text renderer based on typed-html.
 		"jsxImportSource": "typed-htmx/typed-html",
@@ -19,7 +19,5 @@
 		"skipDefaultLibCheck": true /* Skip type checking .d.ts files that are included with TypeScript. */,
 		"skipLibCheck": true /* Skip type checking all .d.ts files. */
 	},
-	"include": [
-		"src/**/*",
-	]
+	"include": ["src/**/*"]
 }

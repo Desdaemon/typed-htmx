@@ -2,7 +2,7 @@
 /// <reference types="typed-html" />
 
 import { createElement } from "typed-html";
-import { jsxConfig } from "../index";
+import { jsxConfig } from "../index.js";
 
 type Element = JSX.Element | Node;
 

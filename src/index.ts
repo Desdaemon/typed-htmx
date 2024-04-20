@@ -54,10 +54,10 @@ function isRenderable(value: unknown): value is Renderable {
 	return value === 0 || !!value;
 }
 function attrSanitizer(raw: Renderable): string {
-	return String(raw).replaceAll(attrPattern, (sub) => attrReplacements[sub] || sub);
+	return String(raw).replace(attrPattern, (sub) => attrReplacements[sub] || sub);
 }
 function attrSanitizerWithoutDQ(raw: Renderable): string {
-	return String(raw).replaceAll(attrPatternWithoutDQ, (sub) => attrReplacements[sub] || sub);
+	return String(raw).replace(attrPatternWithoutDQ, (sub) => attrReplacements[sub] || sub);
 }
 function htmlSanitizer(raw: Renderable): string {
 	const out = String(raw);
@@ -84,7 +84,8 @@ function htmlTransformChildren(value: InterpValue): string {
 	else if (isObject(value)) obj = value;
 	else return "";
 	const out: string[] = [];
-	for (const [key, attr] of Object.entries(obj)) {
+	for (const key in Object.keys(obj)) {
+		const attr = (obj as Record<string, unknown>)[key];
 		if (!isRenderable(attr) && attr !== "") continue;
 		if (jsxConfig.jsonAttributes.has(key)) {
 			out.push(`${key}='${attrSanitizerWithoutDQ(JSON.stringify(attr))}'`);
@@ -98,7 +99,7 @@ function htmlTransformChildren(value: InterpValue): string {
 /**
  * A [tagged template](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates)
  * that interprets different kinds of {@link InterpValue values} into escaped HTML.
- * 
+ *
  * ```ts twoslash
  * import { html } from 'typed-htmx';
  * function assertEqual(left: any, right: any) {}

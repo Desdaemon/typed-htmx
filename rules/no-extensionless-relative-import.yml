@@ -1,0 +1,28 @@
+id: no-extensionless-relative-import
+message: Relative imports must end in .js
+severity: error
+language: ts
+rule:
+  pattern: "$IMPORT"
+  regex: "/([^.]+)[^/]$"
+  kind: string_fragment
+  any:
+    - inside:
+        stopBy: end
+        kind: import_statement
+    - inside:
+        stopBy: end
+        kind: export_statement
+    - inside:
+        stopBy: end
+        kind: call_expression
+        has:
+          field: function
+          regex: "^import$"
+transform:
+  OUTPUT:
+    replace:
+      replace: '.*'
+      by: '$0.js'
+      source: $IMPORT
+fix: "$OUTPUT"

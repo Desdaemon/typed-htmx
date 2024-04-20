@@ -6,7 +6,7 @@
 
 ## 0.2.0
 
-- *(Breaking)* `jsxConfig.jsonAttributes` changed to be a Set
+- _(Breaking)_ `jsxConfig.jsonAttributes` changed to be a Set
 - New template function `html` for compatibility with swc-plugin-static-jsx
 
 ## 0.1.4
