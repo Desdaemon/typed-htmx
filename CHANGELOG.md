@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.2
+
+- Fix ESM imports when not using bundlers
+
 ## 0.2.1
 
 - Fix types when not using typed-html
