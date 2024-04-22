@@ -165,7 +165,7 @@ interface HtmxBuiltinExtensions {
  */
 interface HtmxAttributes {
 	/** @ignore For React compatibility only. */
-	children?: {};
+	children?: {} | null;
 	/** @ignore For React compatibility only. */
 	key?: {};
 	/**
