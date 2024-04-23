@@ -84,7 +84,7 @@ function htmlTransformChildren(value: InterpValue): string {
 	else if (isObject(value)) obj = value;
 	else return "";
 	const out: string[] = [];
-	for (const key in Object.keys(obj)) {
+	for (const key of Object.keys(obj)) {
 		const attr = (obj as Record<string, unknown>)[key];
 		if (!isRenderable(attr) && attr !== "") continue;
 		if (jsxConfig.jsonAttributes.has(key)) {

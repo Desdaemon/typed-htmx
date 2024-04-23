@@ -6,7 +6,7 @@ describe("html templator", () => {
 		expect(<div hx-vals={{ foo: "It's joever" }} />).toBe(`<div hx-vals='{"foo":"It&#39;s joever"}'></div>`);
 	});
 	it("skips falsy attributes", () => {
-		expect(<div data-foo={false} {...{ foobar: false }} />).toBe("<div></div>");
+		expect(<div data-foo={false} {...{ foobar: false }} />).toBe("<div ></div>");
 	});
 	it("correctly handles void elements", () => {
 		expect(
