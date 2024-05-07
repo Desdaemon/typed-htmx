@@ -42,6 +42,7 @@ const config = {
 				cleanOutputDir: true,
 				externalPattern: ["node_modules/**/*"],
 				plugin: ["typedoc-plugin-mdn-links"],
+				categoryOrder: ["Core", "*", "Extensions"],
 			}),
 		],
 	],

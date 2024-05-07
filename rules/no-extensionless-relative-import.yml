@@ -22,7 +22,7 @@ rule:
 transform:
   OUTPUT:
     replace:
-      replace: '.*'
-      by: '$0.js'
+      replace: ".*"
+      by: "$0.js"
       source: $IMPORT
 fix: "$OUTPUT"
