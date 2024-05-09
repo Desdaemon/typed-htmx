@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.3.0
+
+- Update definitions for htmx 1.9.10
+
 ## 0.2.3
 
 - Fix bug introduced in previous version that breaks the built-in HTML renderer
