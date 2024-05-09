@@ -55,6 +55,6 @@
 	},
 	"devDependencies": {
 		"cross-env": "^7.0.3",
-		"prettier": "^3.0.0"
+		"prettier": "^3.2.5"
 	}
 }

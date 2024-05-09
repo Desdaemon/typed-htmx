@@ -1,5 +1,7 @@
 {
-	"include": ["src/**/*"],
+	"include": [
+		"src/**/*"
+	],
 	"compilerOptions": {
 		"target": "ES2018",
 		"module": "Node16",
@@ -7,6 +9,10 @@
 		"declaration": true,
 		"sourceMap": true,
 		"outDir": "./dist",
+		"lib": [
+			"ES2018",
+			"DOM"
+		],
 		"forceConsistentCasingInFileNames": true,
 		"strict": true,
 		"noUncheckedIndexedAccess": true,

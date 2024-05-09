@@ -36,7 +36,7 @@ const config = {
 			({
 				entryPoints: ["../src/index.ts", "../src/jsx.d.ts"],
 				tsconfig: "../tsconfig.json",
-				hideInPageTOC: true,
+				hidePageTitle: true,
 				readme: 'none',
 				watch: process.env.npm_lifecycle_event === "start",
 				cleanOutputDir: true,
