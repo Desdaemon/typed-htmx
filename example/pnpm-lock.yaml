@@ -1,22 +1,27 @@
-lockfileVersion: '6.0'
+lockfileVersion: '9.0'
 
 settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-dependencies:
-  typed-htmx:
-    specifier: link:..
-    version: link:..
+importers:
 
-devDependencies:
-  hono:
-    specifier: ^3.11.12
-    version: 3.11.12
+  .:
+    dependencies:
+      typed-htmx:
+        specifier: link:..
+        version: link:..
+    devDependencies:
+      hono:
+        specifier: ^3.11.12
+        version: 3.11.12
 
 packages:
 
-  /hono@3.11.12:
+  hono@3.11.12:
     resolution: {integrity: sha512-TrxH75bc0m2UbvrhaXkoo32A9OhkJtvICAYgYWtxqLDOxBjRqSikyp4K7HTbnWkPeg9Z+2Q3nv0dN4o8kL6yLg==}
     engines: {node: '>=16.0.0'}
-    dev: true
+
+snapshots:
+
+  hono@3.11.12: {}

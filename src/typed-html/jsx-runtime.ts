@@ -1,5 +1,5 @@
-/// <reference path="../jsx.d.ts" />
 /// <reference types="typed-html" />
+/// <reference path="../jsx.d.ts" />
 
 import { createElement } from "typed-html";
 import { jsxConfig } from "../index.js";

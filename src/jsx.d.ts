@@ -34,51 +34,69 @@ type HxSync = ":drop" | ":abort" | ":replace" | ":queue" | ":queue first" | ":qu
 /**
  * Any of the standard DOM events, or htmx-specific events.
  */
-type HxTriggers = keyof GlobalEventHandlersEventMap | HtmxEvents;
+type HxTriggers = keyof GlobalEventHandlersEventMap | HtmxUtils.HtmxEvents;
 
-type HtmxEvents =
-	| "htmx:abort"
-	| "htmx:afterOnLoad"
-	| "htmx:afterProcessNode"
-	| "htmx:afterRequest"
-	| "htmx:afterSettle"
-	| "htmx:afterSwap"
-	| "htmx:beforeCleanupElement"
-	| "htmx:beforeOnLoad"
-	| "htmx:beforeProcessNode"
-	| "htmx:beforeRequest"
-	| "htmx:beforeSwap"
-	| "htmx:beforeSend"
-	| "htmx:configRequest"
-	| "htmx:confirm"
-	| "htmx:historyCacheError"
-	| "htmx:historyCacheMiss"
-	| "htmx:historyCacheMissError"
-	| "htmx:historyCacheMissLoad"
-	| "htmx:historyRestore"
-	| "htmx:beforeHistorySave"
-	| "htmx:load"
-	| "htmx:noSSESourceError"
-	| "htmx:onLoadError"
-	| "htmx:oobAfterSwap"
-	| "htmx:oobBeforeSwap"
-	| "htmx:oobErrorNoTarget"
-	| "htmx:prompt"
-	| "htmx:pushedIntoHistory"
-	| "htmx:responseError"
-	| "htmx:sendError"
-	| "htmx:sseError"
-	| "htmx:sseOpen"
-	| "htmx:swapError"
-	| "htmx:targetError"
-	| "htmx:timeout"
-	| "htmx:validation:validate"
-	| "htmx:vaildation:failed"
-	| "htmx:validation:halted"
-	| "htmx:xhr:abort"
-	| "htmx:xhr:loadend"
-	| "htmx:xhr:loadstart"
-	| "htmx:xhr:progress"
+/** @ignore */
+declare namespace HtmxUtils {
+	type HxOnMap =
+		{ [K in keyof GlobalEventHandlersEventMap as `hx-on-${K}`]?: string; } &
+		{ [K in HxOnHtmxEvents as `hx-on--${K}`]?: string; }
+
+	type HxOnHtmxEvents =
+		| JsxHtmxEvents
+		| keyof { [K in keyof HxSubevents as `${K}-${HxSubevents[K]}`]: never }
+
+	type JsxHtmxEvents =
+		| "abort"
+		| "after-on-load"
+		| "after-process-node"
+		| "after-request"
+		| "after-settle"
+		| "after-swap"
+		| "before-cleanup-element"
+		| "before-on-load"
+		| "before-process-node"
+		| "before-request"
+		| "before-swap"
+		| "before-send"
+		| "config-request"
+		| "confirm"
+		| "history-cache-error"
+		| "history-cache-miss"
+		| "history-cache-miss-error"
+		| "history-cache-miss-load"
+		| "history-restore"
+		| "before-history-save"
+		| "load"
+		| "no-sse-source-error"
+		| "on-load-error"
+		| "oob-after-swap"
+		| "oob-before-swap"
+		| "oob-error-no-target"
+		| "prompt"
+		| "pushed-into-history"
+		| "response-error"
+		| "send-error"
+		| "sse-error"
+		| "sse-open"
+		| "swap-error"
+		| "target-error"
+		| "timeout"
+
+	type HxSubevents = {
+		validation: 'validate' | 'failed' | 'halted';
+		xhr: 'abort' | 'loadend' | 'loadstart' | 'progress';
+	}
+
+	type KebabToCamel<T extends string> =
+		T extends `${infer Head}-${infer Rest}`
+		? `${Head}${KebabToCamel<Capitalize<Rest>>}`
+		: T
+
+	type HtmxEvents =
+		| `htmx:${KebabToCamel<JsxHtmxEvents>}`
+		| keyof { [K in keyof HxSubevents as `htmx:${K}:${HxSubevents[K]}`]: never }
+}
 
 /**
  * An event followed by one of these modifiers, e.g. `click once`.
@@ -111,14 +129,15 @@ type HxTriggerModifier =
  *     }
  *     interface HtmlTag {
  *       /** Describe your attribute *\/
- *       ["my-extension-attr"]?: string;
+ *       ["my-extension-attr"]?: "true" | "false";
  *       // Add any other attributes your extension uses here
  *     }
  *   }
  * }
  *
  * <div hx-ext="my-extension">
- *   <span my-extension-attr="foo">Hello</span>
+ *   <span my-extension-attr="true">Hello</span>
+ * //      ^?
  * </div>
  * ```
  */
@@ -298,12 +317,12 @@ interface HtmxBuiltinExtensions {
  * `hx-get`, `hx-post` and other request attributes can include path variables by
  * using the {@linkcode HtmxBuiltinExtensions.pathParams path-params} extension.
  * Once used as a path variable, it will not be included in the request body.
- * ```jsx
- * <button hx-post="/api/user/{id}" hx-vals="{'id': 1,'foo':true}" hx-ext="path-params">...</a>
+ * ```jsx twoslash
+ * <button hx-post="/api/user/{id}" hx-vals="{'id': 1,'foo':true}" hx-ext="path-params">...</button>
  * // Only 'foo' will be included in the request body
  * ```
  */
-interface HtmxAttributes {
+interface HtmxAttributes extends HtmxUtils.HxOnMap {
 	/** @ignore For React compatibility only. */
 	children?: {} | null;
 	/** @ignore For React compatibility only. */
@@ -766,11 +785,11 @@ interface HtmxAttributes {
 
 /** @ignore */
 declare namespace JSX {
-	interface HtmxExtensions extends HtmxBuiltinExtensions {}
+	interface HtmxExtensions extends HtmxBuiltinExtensions { }
 
 	// typed-html
-	interface HtmlTag extends HtmxAttributes {}
+	interface HtmlTag extends HtmxAttributes { }
 }
 
 /** @ignore */
-interface HTMLElement extends HtmxAttributes {}
+interface HTMLElement extends HtmxAttributes { }
