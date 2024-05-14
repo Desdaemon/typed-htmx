@@ -1,6 +1,6 @@
 {
 	"name": "typed-htmx",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Definitions for htmx attributes in JSX",
 	"scripts": {
 		"dist": "bash scripts/dist.sh",

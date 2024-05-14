@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.3.1
+
+- Fix bug introduced in last version, which disallowed ambient type imports
+- More completions for `hx-on-` and `hx-target`
+
 ## 0.3.0
 
 - Update definitions for htmx 1.9.10
