@@ -2,7 +2,7 @@
 /// <reference path="../jsx.d.ts" />
 
 import { createElement } from "typed-html";
-import { jsxConfig } from "../index.js";
+import { jsxConfig } from "../index.ts";
 
 type Element = JSX.Element | Node;
 

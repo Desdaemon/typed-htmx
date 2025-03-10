@@ -1,7 +1,7 @@
 /// <reference path="../jsx.d.ts" />
 
-export { Fragment } from "./jsx-runtime.js";
-import { jsx, jsxs, type Node } from "./jsx-runtime.js";
+export { Fragment } from "./jsx-runtime.ts";
+import { jsx, jsxs, type Node } from "./jsx-runtime.ts";
 
 export function jsxDEV(
 	tag: any,

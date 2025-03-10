@@ -79,13 +79,14 @@ function htmlTransformChildren(value: InterpValue): string {
 		return out.join(" ");
 	}
 
-	let obj: {};
+	let obj: Record<string, unknown>;
 	if ("$$spread" in value && isObject(value.$$spread)) obj = value.$$spread;
 	else if (isObject(value)) obj = value;
 	else return "";
 	const out: string[] = [];
 	for (const key of Object.keys(obj)) {
-		const attr = (obj as Record<string, unknown>)[key];
+		const attr = obj[key];
+		// @ts-expect-error !Renderable is not null | undefined
 		if (!isRenderable(attr) && attr !== "") continue;
 		if (jsxConfig.jsonAttributes.has(key)) {
 			out.push(`${key}='${attrSanitizerWithoutDQ(JSON.stringify(attr))}'`);

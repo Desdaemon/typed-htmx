@@ -6,7 +6,7 @@
 		// use ast-grep to enforce it.
 		"moduleResolution": "Bundler",
 		"outDir": "./dist/esm",
-		"declaration": false,
+		// "declaration": false,
 		"sourceMap": false
 	}
 }
